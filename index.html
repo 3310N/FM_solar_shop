@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FM Solar Shop — كاميرا المراقبة الشمسية 3PTZ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sand-50: #FFFBF5;
+  --sand-100: #FFF5E8;
+  --sand-200: #FFE8C8;
+  --sand-300: #FFD9A3;
+  --sand-400: #F5C06A;
+  --solar: #E8890C;
+  --solar-deep: #C66D00;
+  --solar-glow: #FFB340;
+  --earth: #2C1810;
+  --earth-mid: #4A3228;
+  --earth-soft: #6B5548;
+  --earth-pale: #9B8A7E;
+  --sky: #1B4B6B;
+  --mint: #0FA677;
+  --mint-soft: #E8F8F0;
+  --danger: #D64045;
+  --white: #FFFFFF;
+  --shadow-sm: 0 1px 3px rgba(44,24,16,0.06);
+  --shadow-md: 0 4px 16px rgba(44,24,16,0.08);
+  --shadow-lg: 0 12px 40px rgba(44,24,16,0.12);
+  --shadow-glow: 0 0 40px rgba(232,137,12,0.15);
+  --radius: 20px;
+  --radius-sm: 14px;
+  --radius-xs: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'IBM Plex Sans Arabic', 'Changa', sans-serif;
+  background: var(--sand-50);
+  color: var(--earth);
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === TEXTURE LAYER === */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e8890c' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* === TOP RIBBON === */
+.ribbon {
+  background: var(--earth);
+  color: var(--sand-200);
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+.ribbon::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,179,64,0.08), transparent);
+  animation: ribbonShine 4s ease-in-out infinite;
+}
+@keyframes ribbonShine {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* === HEADER === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,251,245,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(44,24,16,0.05);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(145deg, var(--solar), var(--solar-deep));
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-glow);
+  position: relative;
+}
+.brand-mark::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 15px;
+  background: linear-gradient(145deg, var(--solar-glow), transparent);
+  opacity: 0.3;
+  z-index: -1;
+}
+.brand-mark svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--white);
+}
+.brand-name {
+  font-family: 'Changa', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--earth);
+  letter-spacing: -0.3px;
+}
+.wa-float {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--mint);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 12px rgba(15,166,119,0.25);
+}
+.wa-float:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(15,166,119,0.3);
+}
+
+/* === CONTAINER === */
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  z-index: 5;
+}
+
+/* === HERO === */
+.hero {
+  text-align: center;
+  padding: 32px 0 16px;
+}
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--sand-100);
+  border: 1px solid var(--sand-200);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--solar-deep);
+  margin-bottom: 18px;
+}
+.hero-pill .live-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--mint);
+  border-radius: 50%;
+  position: relative;
+}
+.hero-pill .live-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--mint);
+  opacity: 0.3;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.8); opacity: 0; }
+}
+
+.hero h1 {
+  font-family: 'Changa', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  color: var(--earth);
+}
+.hero h1 .accent {
+  color: var(--solar);
+  position: relative;
+}
+.hero h1 .accent::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--sand-200);
+  border-radius: 3px;
+  z-index: -1;
+}
+.hero-desc {
+  font-size: 14px;
+  color: var(--earth-pale);
+  font-weight: 400;
+  max-width: 320px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* === GALLERY === */
+.gallery {
+  margin: 20px 0;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--sand-100);
+}
+.gallery-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.gallery-track img {
+  min-width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+.gallery-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--danger);
+  color: var(--white);
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(214,64,69,0.3);
+}
+.gallery-counter {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  background: rgba(44,24,16,0.5);
+  backdrop-filter: blur(8px);
+  padding: 5px 10px;
+  border-radius: 100px;
+}
+.gallery-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: all 0.35s;
+}
+.gallery-dot.active {
+  background: var(--solar-glow);
+  width: 22px;
+  border-radius: 4px;
+}
+.g-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  border: none;
+  box-shadow: var(--shadow-md);
+  color: var(--earth);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.25s;
+  display: grid;
+  place-items: center;
+}
+.g-arrow:hover { box-shadow: var(--shadow-lg); transform: translateY(-50%) scale(1.08); }
+.g-arrow.left { left: 10px; }
+.g-arrow.right { right: 10px; }
+
+/* === PRICE BLOCK === */
+.price-block {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 0 8px;
+}
+.price-main {
+  font-family: 'Space Mono', monospace;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--earth);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.price-main .currency {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--earth-pale);
+  letter-spacing: 0;
+  margin-right: 2px;
+}
+.price-old {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  color: var(--earth-pale);
+  text-decoration: line-through;
+  text-decoration-color: var(--danger);
+}
+
+/* === TRUST CARDS === */
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 16px 0;
+}
+.trust-card {
+  background: var(--white);
+  border: 1px solid var(--sand-200);
+  border-radius: var(--radius-sm);
+  padding: 16px 10px;
+  text-align: center;
+  transition: all 0.3s;
+  box-shadow: var(--shadow-sm);
+}
+.trust-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--sand-300);
+}
+.trust-icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 10px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+.trust-card:nth-child(1) .trust-icon { background: linear-gradient(135deg, #FFF0DB, #FFE0B2); }
+.trust-card:nth-child(2) .trust-icon { background: linear-gradient(135deg, #E0F2E9, #C8E6C9); }
+.trust-card:nth-child(3) .trust-icon { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); }
+.trust-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--earth-mid);
+  line-height: 1.55;
+}
+
+/* === SECTION DIVIDER === */
+.divider {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sand-300), var(--solar), var(--sand-300));
+  border-radius: 2px;
+  margin: 28px auto;
+}
+
+/* === FEATURES === */
+.features-section { margin: 8px 0 24px; }
+.section-label {
+  font-family: 'Changa', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+  color: var(--earth);
+}
+.feat-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.feat-item {
+  background: var(--white);
+  border: 1px solid var(--sand-200);
+  border-radius: var(--radius-sm);
+  padding: 18px 14px;
+  transition: all 0.3s;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+.feat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at top right, var(--sand-100), transparent);
+  border-radius: 0 var(--radius-sm) 0 0;
+}
+.feat-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--sand-300);
+}
+.feat-emoji { font-size: 28px; margin-bottom: 8px; }
+.feat-title {
+  font-family: 'Changa', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--earth);
+  margin-bottom: 2px;
+}
+.feat-sub {
+  font-size: 11px;
+  color: var(--earth-pale);
+  font-weight: 400;
+}
+
+/* === SOCIAL PROOF === */
+.proof-strip {
+  background: var(--white);
+  border: 1px solid var(--sand-200);
+  border-radius: var(--radius);
+  padding: 22px;
+  text-align: center;
+  margin: 20px 0;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+.proof-strip::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 60px;
+  background: radial-gradient(ellipse, rgba(232,137,12,0.08), transparent);
+}
+.proof-stars {
+  font-size: 24px;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+}
+.proof-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--solar-deep);
+  margin-bottom: 3px;
+}
+.proof-detail {
+  font-size: 12px;
+  color: var(--earth-pale);
+}
+
+/* === ORDER FORM === */
+.order-section {
+  background: var(--white);
+  border: 2px solid var(--solar);
+  border-radius: var(--radius);
+  padding: 28px 22px;
+  margin: 28px 0;
+  position: relative;
+  box-shadow: var(--shadow-glow), var(--shadow-lg);
+}
+.order-section::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 20%;
+  right: 20%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--solar-glow), var(--solar), var(--solar-glow), transparent);
+  border-radius: 0 0 4px 4px;
+}
+.order-header {
+  font-family: 'Changa', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 6px;
+  color: var(--earth);
+}
+.order-subtitle {
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--earth-pale);
+  margin-bottom: 22px;
+}
+
+.field { margin-bottom: 16px; }
+.field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--earth-mid);
+  margin-bottom: 6px;
+}
+.field-input {
+  width: 100%;
+  background: var(--sand-50);
+  border: 1.5px solid var(--sand-200);
+  border-radius: var(--radius-xs);
+  padding: 14px 16px;
+  color: var(--earth);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.25s;
+  direction: rtl;
+}
+.field-input:focus {
+  outline: none;
+  border-color: var(--solar);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(232,137,12,0.08);
+}
+.field-input::placeholder { color: var(--earth-pale); opacity: 0.5; }
+
+.field-select {
+  width: 100%;
+  background: var(--sand-50);
+  border: 1.5px solid var(--sand-200);
+  border-radius: var(--radius-xs);
+  padding: 14px 16px;
+  color: var(--earth);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  appearance: none;
+  cursor: pointer;
+  direction: rtl;
+  transition: all 0.25s;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%239B8A7E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 16px center;
+}
+.field-select:focus {
+  outline: none;
+  border-color: var(--solar);
+  background-color: var(--white);
+}
+.field-select option { background: var(--white); color: var(--earth); }
+
+.field-input.error, .field-select.error {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 4px rgba(214,64,69,0.06);
+}
+.field-error {
+  color: var(--danger);
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 5px;
+  display: none;
+}
+.field-error.show { display: block; }
+
+/* Quantity */
+.qty-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.qty-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  border: 1.5px solid var(--sand-200);
+  background: var(--sand-50);
+  color: var(--earth);
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: grid;
+  place-items: center;
+}
+.qty-btn:hover { border-color: var(--solar); background: var(--sand-100); }
+.qty-btn:active { transform: scale(0.95); }
+.qty-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  min-width: 36px;
+  text-align: center;
+  color: var(--earth);
+}
+
+/* Total */
+.total-bar {
+  background: linear-gradient(135deg, var(--sand-100), var(--sand-200));
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  text-align: center;
+  margin: 18px 0;
+  border: 1px solid var(--sand-300);
+}
+.total-label {
+  font-size: 12px;
+  color: var(--earth-soft);
+  margin-bottom: 2px;
+}
+.total-amount {
+  font-family: 'Space Mono', monospace;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--solar-deep);
+  letter-spacing: -1px;
+}
+.total-amount .total-unit {
+  font-size: 13px;
+  color: var(--earth-pale);
+  letter-spacing: 0;
+}
+
+/* CTA Button */
+.cta-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--solar) 0%, var(--solar-deep) 100%);
+  color: var(--white);
+  border: none;
+  padding: 18px;
+  border-radius: var(--radius-sm);
+  font-family: 'Changa', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(232,137,12,0.35);
+  letter-spacing: 0.3px;
+}
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s;
+}
+.cta-btn:hover::after { left: 100%; }
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(232,137,12,0.4);
+}
+.cta-btn:active { transform: translateY(0); }
+.cta-btn.loading { pointer-events: none; opacity: 0.8; }
+.cta-btn .spinner {
+  display: none;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255,255,255,0.25);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: 0 auto;
+}
+.cta-btn.loading .cta-text { display: none; }
+.cta-btn.loading .spinner { display: block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.form-footer {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 11.5px;
+  color: var(--earth-pale);
+  line-height: 2;
+}
+
+/* === SUCCESS MODAL === */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(44,24,16,0.6);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--white);
+  border-radius: 28px;
+  padding: 44px 28px 32px;
+  text-align: center;
+  max-width: 380px;
+  width: 100%;
+  animation: modalIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+.modal-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--mint), var(--mint-soft), var(--mint));
+}
+@keyframes modalIn {
+  from { transform: scale(0.88) translateY(16px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+.modal-check {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  background: var(--mint-soft);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+}
+.modal-title {
+  font-family: 'Changa', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--mint);
+  margin-bottom: 10px;
+}
+.modal-body {
+  font-size: 13.5px;
+  color: var(--earth-soft);
+  line-height: 2;
+  margin-bottom: 22px;
+}
+.modal-close {
+  background: var(--mint);
+  color: var(--white);
+  border: none;
+  padding: 13px 36px;
+  border-radius: 14px;
+  font-family: 'Changa', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 12px rgba(15,166,119,0.25);
+}
+.modal-close:hover { background: #0d9068; transform: translateY(-1px); }
+
+/* === FOOTER === */
+.footer {
+  text-align: center;
+  padding: 32px 16px 40px;
+  font-size: 12px;
+  color: var(--earth-pale);
+}
+.footer a { color: var(--solar); text-decoration: none; font-weight: 600; }
+
+/* === ANIMATIONS === */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal:nth-child(2) { transition-delay: 0.05s; }
+.reveal:nth-child(3) { transition-delay: 0.1s; }
+
+/* Utility */
+.hidden { display: none !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--sand-50); }
+::-webkit-scrollbar-thumb { background: var(--sand-300); border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<!-- Ribbon -->
+<div class="ribbon">
+  🚚 التوصيل مجاني لجميع أنحاء المغرب — Livraison gratuite dans tout le Maroc
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="brand">
+    <div class="brand-mark">
+      <svg viewBox="0 0 24 24"><path d="M12 2L14.5 9H22L16 13.5L18 21L12 17L6 21L8 13.5L2 9H9.5L12 2Z"/></svg>
+    </div>
+    <span class="brand-name">FM Solar</span>
+  </div>
+  <a href="https://wa.me/2120664995097" class="wa-float" target="_blank">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</header>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero reveal">
+    <div class="hero-pill">
+      <span class="live-dot"></span>
+      ⭐ تقييم العملاء 4.8/5
+    </div>
+    <h1>كاميرا المراقبة<br><span class="accent">الشمسية</span> 3PTZ</h1>
+    <p class="hero-desc">15MP · 3 عدسات · طاقة شمسية + 4G<br>بلا واي فاي، بلا كابلات — Sans câbles</p>
+  </section>
+
+  <!-- Gallery -->
+  <div class="gallery reveal">
+    <div class="gallery-track" id="galleryTrack">
+      <img src="img1.png" alt="Camera Solaire 3PTZ - Vue 1">
+      <img src="img2.png" alt="Camera Solaire 3PTZ - Vue 2">
+      <img src="img3.png" alt="Camera Solaire 3PTZ - Vue 3">
+    </div>
+    <div class="gallery-badge">-28%</div>
+    <button class="g-arrow left" onclick="slideGallery(-1)">‹</button>
+    <button class="g-arrow right" onclick="slideGallery(1)">›</button>
+    <div class="gallery-counter">
+      <div class="gallery-dot active" onclick="goToSlide(0)"></div>
+      <div class="gallery-dot" onclick="goToSlide(1)"></div>
+      <div class="gallery-dot" onclick="goToSlide(2)"></div>
+    </div>
+  </div>
+
+  <!-- Price -->
+  <div class="price-block reveal">
+    <div class="price-main"><span class="currency">MAD</span> 1,050</div>
+    <div class="price-old">1,450 MAD</div>
+  </div>
+
+  <!-- Trust -->
+  <div class="trust-grid reveal">
+    <div class="trust-card">
+      <div class="trust-icon">🚚</div>
+      <div class="trust-label">توصيل مجاني<br>Livraison gratuite</div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">💰</div>
+      <div class="trust-label">الدفع عند الاستلام<br>Paiement COD</div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">🛡️</div>
+      <div class="trust-label">ضمان الجودة<br>Qualité garantie</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Features -->
+  <section class="features-section reveal">
+    <div class="section-label">🔧 المميزات — Caractéristiques</div>
+    <div class="feat-list">
+      <div class="feat-item">
+        <div class="feat-emoji">☀️</div>
+        <div class="feat-title">طاقة شمسية</div>
+        <div class="feat-sub">بلا فاتورة ضو — Énergie solaire</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-emoji">📡</div>
+        <div class="feat-title">شريحة 4G</div>
+        <div class="feat-sub">غير دخل الشريحة وخدم — SIM 4G</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-emoji">🔄</div>
+        <div class="feat-title">دوران 360°</div>
+        <div class="feat-sub">كيغطي كل الزوايا — Panoramique</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-emoji">🌙</div>
+        <div class="feat-title">رؤية ليلية</div>
+        <div class="feat-sub">واضحة فالضلام — Vision nocturne</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-emoji">📱</div>
+        <div class="feat-title">تحكم بالهاتف</div>
+        <div class="feat-sub">فين ما كنتي — Contrôle mobile</div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-emoji">🎥</div>
+        <div class="feat-title">3 عدسات 15MP</div>
+        <div class="feat-sub">جودة عالية — Haute résolution</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <div class="proof-strip reveal">
+    <div class="proof-stars">⭐⭐⭐⭐⭐</div>
+    <div class="proof-number">4.8 / 5</div>
+    <div class="proof-detail">+200 زبون راضي — Plus de 200 clients satisfaits</div>
+  </div>
+
+  <!-- Order Form -->
+  <section class="order-section reveal" id="orderForm">
+    <div class="order-header">📦 اطلب الآن</div>
+    <div class="order-subtitle">Commander maintenant — الدفع عند الاستلام</div>
+
+    <div class="field">
+      <label class="field-label">الاسم الكامل — Nom complet *</label>
+      <input type="text" class="field-input" id="inputName" placeholder="مثال: أحمد بنعلي">
+      <div class="field-error" id="errName">المرجو إدخال الاسم الكامل</div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">رقم الهاتف — Téléphone *</label>
+      <input type="tel" class="field-input" id="inputPhone" placeholder="06XXXXXXXX" dir="ltr">
+      <div class="field-error" id="errPhone">المرجو إدخال رقم هاتف صحيح</div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">المدينة — Ville *</label>
+      <select class="field-select" id="inputCity">
+        <option value="">— اختر المدينة —</option>
+        <option value="Casablanca">الدار البيضاء - Casablanca</option>
+        <option value="Rabat">الرباط - Rabat</option>
+        <option value="Marrakech">مراكش - Marrakech</option>
+        <option value="Fes">فاس - Fès</option>
+        <option value="Tanger">طنجة - Tanger</option>
+        <option value="Agadir">أكادير - Agadir</option>
+        <option value="Meknes">مكناس - Meknès</option>
+        <option value="Oujda">وجدة - Oujda</option>
+        <option value="Kenitra">القنيطرة - Kénitra</option>
+        <option value="Tetouan">تطوان - Tétouan</option>
+        <option value="Safi">آسفي - Safi</option>
+        <option value="El Jadida">الجديدة - El Jadida</option>
+        <option value="Nador">الناظور - Nador</option>
+        <option value="Beni Mellal">بني ملال - Béni Mellal</option>
+        <option value="Khouribga">خريبكة - Khouribga</option>
+        <option value="Settat">سطات - Settat</option>
+        <option value="Taza">تازة - Taza</option>
+        <option value="Mohammedia">المحمدية - Mohammedia</option>
+        <option value="Autre">مدينة أخرى - Autre ville</option>
+      </select>
+      <div class="field-error" id="errCity">المرجو اختيار المدينة</div>
+    </div>
+
+    <div class="field hidden" id="otherCityField">
+      <label class="field-label">اسم المدينة — Nom de la ville</label>
+      <input type="text" class="field-input" id="inputOtherCity" placeholder="اكتب اسم المدينة">
+    </div>
+
+    <div class="field">
+      <label class="field-label">العدد — Quantité</label>
+      <div class="qty-wrap">
+        <button class="qty-btn" onclick="updateQty(-1)">−</button>
+        <div class="qty-num" id="qtyDisplay">1</div>
+        <button class="qty-btn" onclick="updateQty(1)">+</button>
+      </div>
+    </div>
+
+    <div class="total-bar">
+      <div class="total-label">المبلغ الإجمالي — Total</div>
+      <div class="total-amount" id="totalDisplay">1,050 <span class="total-unit">MAD</span></div>
+    </div>
+
+    <button class="cta-btn" id="ctaBtn" onclick="submitOrder()">
+      <span class="cta-text">✅ تأكيد الطلب — Confirmer la commande</span>
+      <div class="spinner"></div>
+    </button>
+
+    <div class="form-footer">
+      💰 الدفع عند الاستلام — Paiement à la livraison<br>
+      🚚 التوصيل خلال 24-48 ساعة
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 FM Solar Shop — جميع الحقوق محفوظة</p>
+    <p style="margin-top:8px"><a href="https://wa.me/2120664995097">💬 WhatsApp: 0664-995097</a></p>
+  </footer>
+
+</div>
+
+<!-- Success Modal -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-box">
+    <div class="modal-check">✅</div>
+    <div class="modal-title">تم تسجيل طلبك بنجاح!</div>
+    <div class="modal-body">
+      Votre commande a été enregistrée avec succès.<br><br>
+      فريق التأكيد غادي يتواصل معاك قريبا 📞<br>
+      Notre équipe de confirmation vous contactera sous peu.
+    </div>
+    <button class="modal-close" onclick="closeModal()">👍 حسنا — D'accord</button>
+  </div>
+</div>
+
+<script>
+// ===============================================
+// REPLACE WITH YOUR GOOGLE APPS SCRIPT URL
+// ===============================================
+const SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+
+// Gallery
+let slide = 0;
+const track = document.getElementById('galleryTrack');
+const dots = document.querySelectorAll('.gallery-dot');
+
+const TOTAL_SLIDES = 3;
+
+function goToSlide(n) {
+  slide = n;
+  track.style.transform = `translateX(${n * 100}%)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === n));
+}
+function slideGallery(dir) {
+  let next = slide + dir;
+  if (next < 0) next = TOTAL_SLIDES - 1;
+  if (next >= TOTAL_SLIDES) next = 0;
+  goToSlide(next);
+}
+setInterval(() => slideGallery(1), 5000);
+
+// Touch swipe
+let touchStartX = 0;
+track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive: true});
+track.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) slideGallery(diff > 0 ? -1 : 1);
+}, {passive: true});
+
+// Quantity
+let qty = 1;
+const PRICE = 1050;
+function updateQty(dir) {
+  qty = Math.max(1, Math.min(10, qty + dir));
+  document.getElementById('qtyDisplay').textContent = qty;
+  document.getElementById('totalDisplay').innerHTML =
+    (PRICE * qty).toLocaleString() + ' <span class="total-unit">MAD</span>';
+}
+
+// Other city toggle
+document.getElementById('inputCity').addEventListener('change', function() {
+  document.getElementById('otherCityField').classList.toggle('hidden', this.value !== 'Autre');
+});
+
+// Submit
+function submitOrder() {
+  // Clear errors
+  document.querySelectorAll('.field-input, .field-select').forEach(el => el.classList.remove('error'));
+  document.querySelectorAll('.field-error').forEach(el => el.classList.remove('show'));
+
+  const name = document.getElementById('inputName').value.trim();
+  const phone = document.getElementById('inputPhone').value.trim();
+  let city = document.getElementById('inputCity').value;
+  if (city === 'Autre') city = document.getElementById('inputOtherCity').value.trim();
+
+  let valid = true;
+
+  if (!name) {
+    document.getElementById('inputName').classList.add('error');
+    document.getElementById('errName').classList.add('show');
+    valid = false;
+  }
+  if (!phone || phone.length < 9) {
+    document.getElementById('inputPhone').classList.add('error');
+    document.getElementById('errPhone').classList.add('show');
+    valid = false;
+  }
+  if (!city) {
+    document.getElementById('inputCity').classList.add('error');
+    document.getElementById('errCity').classList.add('show');
+    valid = false;
+  }
+
+  if (!valid) {
+    // Scroll to first error
+    document.querySelector('.error')?.scrollIntoView({behavior: 'smooth', block: 'center'});
+    return;
+  }
+
+  const btn = document.getElementById('ctaBtn');
+  btn.classList.add('loading');
+
+  const payload = {
+    date: new Date().toLocaleDateString('fr-FR'),
+    name: name,
+    city: city,
+    phone: phone,
+    product: 'Camera Solaire 3PTZ 15MP',
+    price: PRICE * qty,
+    quantity: qty,
+    status: 'Confirmed',
+    payment: 'Pending',
+    source: 'Website'
+  };
+
+  if (SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    }).finally(() => {
+      btn.classList.remove('loading');
+      showSuccess();
+    });
+  } else {
+    // Demo mode
+    setTimeout(() => {
+      btn.classList.remove('loading');
+      showSuccess();
+    }, 1200);
+  }
+}
+
+function showSuccess() {
+  document.getElementById('successModal').classList.add('open');
+  // Reset
+  document.getElementById('inputName').value = '';
+  document.getElementById('inputPhone').value = '';
+  document.getElementById('inputCity').value = '';
+  qty = 1;
+  document.getElementById('qtyDisplay').textContent = '1';
+  document.getElementById('totalDisplay').innerHTML = '1,050 <span class="total-unit">MAD</span>';
+}
+
+function closeModal() {
+  document.getElementById('successModal').classList.remove('open');
+}
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
