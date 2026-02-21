@@ -147,10 +147,12 @@ body{
 }
 .carousel-slide img{
   width:100%;
-  height:auto;
   display:block;
-  aspect-ratio:4/3;
-  object-fit:cover;
+  height:75vw;
+  max-height:400px;
+  object-fit:contain;
+  object-position:center;
+  background:var(--dark2);
 }
 .carousel-dots{
   position:absolute;
