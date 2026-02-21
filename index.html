@@ -2,814 +2,789 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>FM Solar Shop — كاميرا المراقبة الشمسية 3PTZ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --sun: #E8890C;
-  --sun-deep: #C66D00;
-  --sun-glow: #FFB340;
-  --sun-light: #FFF3E0;
-  --earth: #1A0E08;
-  --earth-mid: #2C1810;
-  --earth-warm: #3D2518;
-  --earth-soft: #6B5548;
-  --earth-pale: #9B8A7E;
-  --cream: #FFF8F0;
-  --cream-dark: #F5EBE0;
-  --mint: #0FA677;
-  --mint-bg: #E8F8F0;
-  --red: #D64045;
-  --white: #FFFFFF;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+:root{
+  --sun:#E8890C;
+  --sun-deep:#C66D00;
+  --sun-glow:#FFB340;
+  --dark:#111;
+  --dark2:#1a1a1a;
+  --dark3:#252525;
+  --mint:#0FA677;
+  --red:#D64045;
+  --cream:#FFF8F0;
+  --cream2:#F5EBE0;
+  --txt:#222;
+  --txt2:#666;
+  --txt3:#999;
+  --white:#fff;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'IBM Plex Sans Arabic', 'Changa', sans-serif;
-  background: var(--cream);
-  color: var(--earth);
-  line-height: 1.7;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+body{
+  font-family:'IBM Plex Sans Arabic','Changa',sans-serif;
+  background:var(--cream);
+  color:var(--txt);
+  line-height:1.7;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  width:100%;
+  min-height:100vh;
 }
 
-/* === FULL-WIDTH SECTIONS === */
-.section-dark {
-  background: var(--earth);
-  color: var(--cream);
-}
-.section-warm {
-  background: linear-gradient(180deg, var(--sun-light) 0%, var(--cream) 100%);
-}
-.inner {
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 0 16px;
+/* ===== ANNOUNCEMENT ===== */
+.ann{
+  background:var(--dark);
+  color:var(--sun-glow);
+  text-align:center;
+  padding:8px 12px;
+  font-size:11px;
+  font-weight:600;
 }
 
-/* === ANNOUNCEMENT === */
-.announce {
-  background: var(--earth);
-  color: var(--sun-glow);
-  text-align: center;
-  padding: 10px 16px;
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  border-bottom: 1px solid rgba(255,179,64,0.15);
+/* ===== NAV ===== */
+.nav{
+  background:var(--dark);
+  padding:10px 14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+  border-bottom:2px solid var(--sun);
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.logo-box{
+  width:32px;height:32px;
+  background:var(--sun);
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+}
+.logo-txt{
+  font-family:'Changa',sans-serif;
+  font-size:16px;
+  font-weight:700;
+  color:var(--white);
+}
+.wa-btn{
+  background:var(--mint);
+  color:var(--white);
+  padding:7px 14px;
+  border-radius:50px;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:4px;
 }
 
-/* === NAV === */
-.nav {
-  background: var(--earth);
-  padding: 12px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 2px solid var(--sun);
+/* ===== HERO ===== */
+.hero{
+  background:var(--dark);
+  padding:24px 16px 28px;
+  text-align:center;
 }
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.hero-badge{
+  display:inline-block;
+  background:rgba(232,137,12,0.15);
+  border:1px solid rgba(232,137,12,0.3);
+  color:var(--sun-glow);
+  padding:5px 14px;
+  border-radius:50px;
+  font-size:11px;
+  font-weight:600;
+  margin-bottom:14px;
 }
-.brand-icon {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, var(--sun), var(--sun-deep));
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 0 20px rgba(232,137,12,0.4);
+.hero h1{
+  font-family:'Changa',sans-serif;
+  font-size:28px;
+  font-weight:800;
+  line-height:1.3;
+  color:var(--white);
+  margin-bottom:10px;
 }
-.brand-icon svg { width: 18px; height: 18px; fill: white; }
-.brand-text {
-  font-family: 'Changa', sans-serif;
-  font-size: 19px;
-  font-weight: 700;
-  color: white;
-}
-.nav-wa {
-  background: var(--mint);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 100px;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.3s;
-  box-shadow: 0 2px 10px rgba(15,166,119,0.3);
-}
-.nav-wa:hover { transform: scale(1.05); }
-
-/* === HERO — DARK === */
-.hero-section {
-  background: var(--earth);
-  padding: 32px 16px 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero-section::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0; right: 0;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, var(--cream));
-  z-index: 0;
-}
-.hero-glow {
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(232,137,12,0.12), transparent 70%);
-  pointer-events: none;
-}
-.hero-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(232,137,12,0.1);
-  border: 1px solid rgba(232,137,12,0.25);
-  padding: 7px 16px;
-  border-radius: 100px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--sun-glow);
-  margin-bottom: 16px;
-}
-.hero-pill .dot {
-  width: 7px; height: 7px;
-  background: var(--mint);
-  border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.5); }
-}
-.hero h1 {
-  font-family: 'Changa', sans-serif;
-  font-size: 34px;
-  font-weight: 800;
-  line-height: 1.25;
-  color: white;
-  margin-bottom: 10px;
-}
-.hero h1 .accent {
-  color: var(--sun-glow);
-}
-.hero-sub {
-  font-size: 14px;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 0;
-  padding-bottom: 80px;
-  line-height: 1.9;
+.hero h1 span{color:var(--sun-glow)}
+.hero p{
+  font-size:13px;
+  color:rgba(255,255,255,0.5);
+  line-height:1.9;
 }
 
-/* === GALLERY — FULL WIDTH === */
-.gallery {
-  position: relative;
-  margin: 0;
-  z-index: 3;
+/* ===== CAROUSEL ===== */
+.carousel{
+  width:100%;
+  position:relative;
+  overflow:hidden;
+  background:var(--dark2);
+  touch-action:pan-y;
 }
-.gallery-track {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.25,1,0.5,1);
+.carousel-inner{
+  display:flex;
+  width:300%;
+  transition:transform 0.4s ease;
 }
-.gallery-track img {
-  min-width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  display: block;
+.carousel-inner.dragging{
+  transition:none;
 }
-.gallery-badge {
-  position: absolute;
-  top: 56px;
-  right: 16px;
-  background: var(--red);
-  color: white;
-  font-family: 'Space Mono', monospace;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 10px;
-  z-index: 5;
-  box-shadow: 0 4px 12px rgba(214,64,69,0.4);
+.carousel-slide{
+  width:100%;
+  flex-shrink:0;
 }
-.gallery-nav {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 6px;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
-  padding: 6px 12px;
-  border-radius: 100px;
-  z-index: 5;
+.carousel-slide img{
+  width:100%;
+  height:auto;
+  display:block;
+  aspect-ratio:4/3;
+  object-fit:cover;
 }
-.gallery-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.3);
-  cursor: pointer;
-  transition: all 0.3s;
+.carousel-dots{
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:6px;
+  background:rgba(0,0,0,0.5);
+  padding:5px 10px;
+  border-radius:50px;
+  z-index:5;
 }
-.gallery-dot.on { background: var(--sun-glow); width: 24px; border-radius: 4px; }
-.g-arr {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 42px; height: 42px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.9);
-  border: none;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-  color: var(--earth);
-  font-size: 18px;
-  cursor: pointer;
-  z-index: 5;
-  transition: all 0.2s;
-  display: grid;
-  place-items: center;
+.carousel-dots span{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.3);
+  cursor:pointer;
+  transition:all 0.3s;
 }
-.g-arr:hover { background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
-.g-arr.l { left: 12px; }
-.g-arr.r { right: 12px; }
-
-/* === PRICE BAR === */
-.price-bar {
-  background: var(--earth);
-  padding: 18px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  border-radius: 18px;
-  margin: 16px 12px;
-  box-shadow: 0 8px 30px rgba(26,14,8,0.15);
+.carousel-dots span.active{
+  background:var(--sun-glow);
+  width:22px;
+  border-radius:4px;
 }
-.price-now {
-  font-family: 'Space Mono', monospace;
-  font-size: 38px;
-  font-weight: 700;
-  color: var(--sun-glow);
-  letter-spacing: -2px;
+.carousel-arr{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:36px;height:36px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.85);
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  color:var(--dark);
 }
-.price-now .cur {
-  font-size: 14px;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 0;
-  margin-right: 4px;
-}
-.price-was {
-  font-family: 'Space Mono', monospace;
-  font-size: 16px;
-  color: rgba(255,255,255,0.35);
-  text-decoration: line-through;
-}
-.price-tag {
-  background: var(--red);
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 5px 10px;
-  border-radius: 8px;
+.carousel-arr.prev{left:8px}
+.carousel-arr.next{right:8px}
+.sale-tag{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:var(--red);
+  color:var(--white);
+  font-family:'Space Mono',monospace;
+  font-size:12px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:8px;
+  z-index:5;
 }
 
-/* === TRUST — FULL WIDTH COLORED === */
-.trust-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  margin: 16px 12px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+/* ===== PRICE ===== */
+.price-row{
+  background:var(--dark);
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin:12px;
+  border-radius:14px;
 }
-.trust-card {
-  padding: 20px 10px;
-  text-align: center;
+.price-big{
+  font-family:'Space Mono',monospace;
+  font-size:32px;
+  font-weight:700;
+  color:var(--sun-glow);
+  letter-spacing:-1px;
 }
-.trust-card:nth-child(1) { background: linear-gradient(180deg, #FFF3E0, #FFE0B2); }
-.trust-card:nth-child(2) { background: linear-gradient(180deg, #E8F5E9, #C8E6C9); }
-.trust-card:nth-child(3) { background: linear-gradient(180deg, #E3F2FD, #BBDEFB); }
-.trust-card .ti { font-size: 28px; margin-bottom: 8px; }
-.trust-card .tl {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--earth-mid);
-  line-height: 1.55;
+.price-big small{
+  font-size:12px;
+  color:rgba(255,255,255,0.4);
+  letter-spacing:0;
 }
-
-/* === FEATURES — DARK BG === */
-.feat-section {
-  background: var(--earth);
-  padding: 32px 12px;
-  margin: 20px 0 0;
+.price-old{
+  font-family:'Space Mono',monospace;
+  font-size:14px;
+  color:rgba(255,255,255,0.3);
+  text-decoration:line-through;
 }
-.feat-title {
-  font-family: 'Changa', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
-  color: white;
-  margin-bottom: 18px;
-}
-.feat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  max-width: 520px;
-  margin: 0 auto;
-}
-.feat-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 20px 14px;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.feat-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--sun-glow), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.feat-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
-.feat-card:hover::before { opacity: 1; }
-.feat-card .fe { font-size: 30px; margin-bottom: 10px; }
-.feat-card .fn { font-size: 14px; font-weight: 700; color: white; margin-bottom: 3px; }
-.feat-card .fd { font-size: 11.5px; color: rgba(255,255,255,0.4); }
-
-/* === PROOF === */
-.proof-bar {
-  background: linear-gradient(135deg, var(--sun), var(--sun-deep));
-  padding: 24px 16px;
-  text-align: center;
-  margin: 0;
-}
-.proof-stars { font-size: 28px; letter-spacing: 3px; margin-bottom: 6px; }
-.proof-score {
-  font-family: 'Space Mono', monospace;
-  font-size: 16px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 4px;
-}
-.proof-count { font-size: 12px; color: rgba(255,255,255,0.7); }
-
-/* === ORDER FORM === */
-.order-section {
-  background: var(--white);
-  padding: 32px 16px;
-  position: relative;
-}
-.order-section::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 10%; right: 10%;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, var(--sun-glow), var(--sun), var(--sun-glow), transparent);
-  border-radius: 0 0 4px 4px;
-}
-.order-inner {
-  max-width: 440px;
-  margin: 0 auto;
-}
-.order-head {
-  font-family: 'Changa', sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 4px;
-}
-.order-sub {
-  text-align: center;
-  font-size: 13px;
-  color: var(--earth-pale);
-  margin-bottom: 24px;
+.price-pct{
+  background:var(--red);
+  color:var(--white);
+  font-size:11px;
+  font-weight:700;
+  padding:3px 8px;
+  border-radius:6px;
 }
 
-.fg { margin-bottom: 16px; }
-.fl {
-  display: block;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--earth-soft);
-  margin-bottom: 7px;
+/* ===== TRUST ===== */
+.trust{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  margin:0 12px 12px;
+  border-radius:14px;
+  overflow:hidden;
 }
-.fi {
-  width: 100%;
-  background: var(--cream);
-  border: 2px solid var(--cream-dark);
-  border-radius: 14px;
-  padding: 14px 16px;
-  color: var(--earth);
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 500;
-  transition: all 0.25s;
-  direction: rtl;
+.trust-item{
+  padding:14px 6px;
+  text-align:center;
 }
-.fi:focus {
-  outline: none;
-  border-color: var(--sun);
-  background: white;
-  box-shadow: 0 0 0 4px rgba(232,137,12,0.1);
-}
-.fi::placeholder { color: var(--earth-pale); opacity: 0.5; }
-.fs {
-  width: 100%;
-  background: var(--cream);
-  border: 2px solid var(--cream-dark);
-  border-radius: 14px;
-  padding: 14px 16px;
-  color: var(--earth);
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 500;
-  appearance: none;
-  cursor: pointer;
-  direction: rtl;
-  transition: all 0.25s;
-}
-.fs:focus { outline: none; border-color: var(--sun); }
-.fs option { background: white; }
-.fi.err, .fs.err { border-color: var(--red); box-shadow: 0 0 0 4px rgba(214,64,69,0.08); }
-.errt { color: var(--red); font-size: 11px; font-weight: 500; margin-top: 5px; display: none; }
-.errt.on { display: block; }
+.trust-item:nth-child(1){background:#FFF3E0}
+.trust-item:nth-child(2){background:#E8F5E9}
+.trust-item:nth-child(3){background:#E3F2FD}
+.trust-item .ti-icon{font-size:22px;margin-bottom:4px}
+.trust-item .ti-txt{font-size:10px;font-weight:600;color:var(--txt);line-height:1.5}
 
-.qr { display: flex; align-items: center; gap: 16px; }
-.qb {
-  width: 50px; height: 50px;
-  border-radius: 14px;
-  border: 2px solid var(--cream-dark);
-  background: var(--cream);
-  color: var(--earth);
-  font-size: 22px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: grid;
-  place-items: center;
+/* ===== FEATURES ===== */
+.features{
+  background:var(--dark);
+  padding:24px 12px;
 }
-.qb:hover { border-color: var(--sun); background: var(--sun-light); }
-.qv {
-  font-family: 'Space Mono', monospace;
-  font-size: 26px;
-  font-weight: 700;
-  min-width: 40px;
-  text-align: center;
+.sec-title{
+  font-family:'Changa',sans-serif;
+  font-size:17px;
+  font-weight:700;
+  color:var(--white);
+  text-align:center;
+  margin-bottom:14px;
 }
+.feat-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.feat-card{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+  padding:14px 10px;
+}
+.feat-card .fc-icon{font-size:24px;margin-bottom:6px}
+.feat-card .fc-name{font-size:12.5px;font-weight:700;color:var(--white);margin-bottom:2px}
+.feat-card .fc-desc{font-size:10.5px;color:rgba(255,255,255,0.4)}
 
-.total-box {
-  background: var(--earth);
-  border-radius: 16px;
-  padding: 18px;
-  text-align: center;
-  margin: 20px 0;
+/* ===== PROOF ===== */
+.proof{
+  background:linear-gradient(135deg,var(--sun),var(--sun-deep));
+  padding:18px 16px;
+  text-align:center;
 }
-.total-label { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
-.total-price {
-  font-family: 'Space Mono', monospace;
-  font-size: 38px;
-  font-weight: 700;
-  color: var(--sun-glow);
-  letter-spacing: -1px;
-}
-.total-price .tu { font-size: 14px; color: rgba(255,255,255,0.4); letter-spacing: 0; }
+.proof-stars{font-size:22px;letter-spacing:2px;margin-bottom:4px}
+.proof-num{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:var(--white);margin-bottom:2px}
+.proof-txt{font-size:11px;color:rgba(255,255,255,0.7)}
 
-.cta {
-  width: 100%;
-  background: linear-gradient(135deg, var(--sun) 0%, var(--sun-deep) 100%);
-  color: white;
-  border: none;
-  padding: 20px;
-  border-radius: 16px;
-  font-family: 'Changa', sans-serif;
-  font-size: 19px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 6px 24px rgba(232,137,12,0.4);
-  position: relative;
-  overflow: hidden;
+/* ===== ORDER FORM ===== */
+.order{
+  background:var(--white);
+  padding:24px 14px;
+  position:relative;
 }
-.cta::after {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  transition: left 0.5s;
+.order::before{
+  content:'';
+  position:absolute;
+  top:0;left:15%;right:15%;
+  height:3px;
+  background:linear-gradient(90deg,transparent,var(--sun-glow),var(--sun),var(--sun-glow),transparent);
 }
-.cta:hover::after { left: 100%; }
-.cta:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(232,137,12,0.5); }
-.cta:active { transform: translateY(0); }
-.cta.ld { pointer-events: none; opacity: 0.7; }
-.cta .sp {
-  display: none;
-  width: 24px; height: 24px;
-  border: 3px solid rgba(255,255,255,0.3);
-  border-top-color: white;
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-  margin: 0 auto;
+.order-title{
+  font-family:'Changa',sans-serif;
+  font-size:20px;
+  font-weight:800;
+  text-align:center;
+  margin-bottom:4px;
 }
-.cta.ld .ct { display: none; }
-.cta.ld .sp { display: block; }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.form-note {
-  text-align: center;
-  margin-top: 16px;
-  font-size: 12px;
-  color: var(--earth-pale);
-  line-height: 2;
+.order-sub{
+  text-align:center;
+  font-size:12px;
+  color:var(--txt3);
+  margin-bottom:20px;
 }
 
-/* === MODAL === */
-.mbg {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  backdrop-filter: blur(8px);
+.fg{margin-bottom:14px}
+.fl{
+  display:block;
+  font-size:11.5px;
+  font-weight:600;
+  color:var(--txt2);
+  margin-bottom:5px;
 }
-.mbg.on { display: flex; }
-.mc {
-  background: white;
-  border-radius: 28px;
-  padding: 44px 28px 32px;
-  text-align: center;
-  max-width: 380px;
-  width: 100%;
-  animation: pop 0.4s cubic-bezier(0.34,1.56,0.64,1);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-  position: relative;
-  overflow: hidden;
+.fi{
+  width:100%;
+  background:var(--cream);
+  border:2px solid var(--cream2);
+  border-radius:12px;
+  padding:12px 14px;
+  color:var(--txt);
+  font-family:inherit;
+  font-size:15px;
+  font-weight:500;
+  transition:border-color 0.2s;
+  direction:rtl;
+  -webkit-appearance:none;
+  appearance:none;
 }
-.mc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--mint); }
-@keyframes pop { from { transform: scale(0.85) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
-.mc .mi { font-size: 56px; margin-bottom: 14px; }
-.mc .mh { font-family: 'Changa', sans-serif; font-size: 21px; font-weight: 700; color: var(--mint); margin-bottom: 10px; }
-.mc .mp { font-size: 13.5px; color: var(--earth-soft); line-height: 2; margin-bottom: 22px; }
-.mc .mo {
-  background: var(--mint);
-  color: white;
-  border: none;
-  padding: 14px 36px;
-  border-radius: 14px;
-  font-family: 'Changa', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
+.fi:focus{
+  outline:none;
+  border-color:var(--sun);
 }
-.mc .mo:hover { background: #0d9068; }
+.fi::placeholder{color:#bbb}
+select.fi{
+  cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23999' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:left 14px center;
+}
+.fi.err{border-color:var(--red)}
+.errt{color:var(--red);font-size:10.5px;font-weight:500;margin-top:4px;display:none}
+.errt.on{display:block}
 
-/* === FOOTER === */
-.foot {
-  background: var(--earth);
-  text-align: center;
-  padding: 28px 16px;
-  font-size: 12px;
-  color: rgba(255,255,255,0.4);
+.qty-row{display:flex;align-items:center;gap:14px}
+.qty-btn{
+  width:44px;height:44px;
+  border-radius:12px;
+  border:2px solid var(--cream2);
+  background:var(--cream);
+  color:var(--txt);
+  font-size:20px;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  -webkit-appearance:none;
 }
-.foot a { color: var(--sun-glow); text-decoration: none; }
+.qty-btn:active{background:var(--cream2)}
+.qty-val{
+  font-family:'Space Mono',monospace;
+  font-size:22px;
+  font-weight:700;
+  min-width:32px;
+  text-align:center;
+}
 
-/* === ANIMATIONS === */
-.rv { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.22,1,0.36,1); }
-.rv.vis { opacity: 1; transform: translateY(0); }
+.total{
+  background:var(--dark);
+  border-radius:14px;
+  padding:14px;
+  text-align:center;
+  margin:16px 0;
+}
+.total-lbl{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:2px}
+.total-val{
+  font-family:'Space Mono',monospace;
+  font-size:32px;
+  font-weight:700;
+  color:var(--sun-glow);
+  letter-spacing:-1px;
+}
+.total-val small{font-size:12px;color:rgba(255,255,255,0.35);letter-spacing:0}
 
-.hidden { display: none !important; }
+.cta{
+  width:100%;
+  background:linear-gradient(135deg,var(--sun),var(--sun-deep));
+  color:var(--white);
+  border:none;
+  padding:16px;
+  border-radius:14px;
+  font-family:'Changa',sans-serif;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 4px 20px rgba(232,137,12,0.35);
+  position:relative;
+  overflow:hidden;
+  -webkit-appearance:none;
+}
+.cta:active{opacity:0.9;transform:scale(0.99)}
+.cta.ld{pointer-events:none;opacity:0.7}
+.cta .sp{
+  display:none;
+  width:22px;height:22px;
+  border:3px solid rgba(255,255,255,0.3);
+  border-top-color:var(--white);
+  border-radius:50%;
+  animation:spin 0.6s linear infinite;
+  margin:0 auto;
+}
+.cta.ld .ct{display:none}
+.cta.ld .sp{display:block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.form-note{
+  text-align:center;
+  margin-top:12px;
+  font-size:11px;
+  color:var(--txt3);
+  line-height:2;
+}
+
+/* ===== MODAL ===== */
+.modal-bg{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  z-index:200;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.modal-bg.on{display:flex}
+.modal-box{
+  background:var(--white);
+  border-radius:24px;
+  padding:36px 24px 28px;
+  text-align:center;
+  max-width:360px;
+  width:100%;
+  animation:pop 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes pop{from{transform:scale(0.85);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-box .m-icon{font-size:48px;margin-bottom:12px}
+.modal-box .m-title{font-family:'Changa',sans-serif;font-size:19px;font-weight:700;color:var(--mint);margin-bottom:8px}
+.modal-box .m-body{font-size:13px;color:var(--txt2);line-height:2;margin-bottom:18px}
+.modal-box .m-btn{
+  background:var(--mint);
+  color:var(--white);
+  border:none;
+  padding:12px 32px;
+  border-radius:12px;
+  font-family:'Changa',sans-serif;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  -webkit-appearance:none;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  background:var(--dark);
+  text-align:center;
+  padding:24px 16px;
+  font-size:11px;
+  color:rgba(255,255,255,0.35);
+}
+.footer a{color:var(--sun-glow);text-decoration:none}
+
+/* ===== ANIMATIONS ===== */
+.rv{opacity:0;transform:translateY(24px);transition:all 0.6s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+.hidden{display:none!important}
 </style>
 </head>
 <body>
 
-<!-- Announcement -->
-<div class="announce">🚚 التوصيل مجاني لجميع أنحاء المغرب — Livraison gratuite partout au Maroc</div>
+<div class="ann">🚚 التوصيل مجاني لجميع أنحاء المغرب — Livraison gratuite</div>
 
-<!-- Nav -->
 <nav class="nav">
-  <div class="brand">
-    <div class="brand-icon"><svg viewBox="0 0 24 24"><path d="M12 2L14.5 9H22L16 13.5L18 21L12 17L6 21L8 13.5L2 9H9.5L12 2Z"/></svg></div>
-    <span class="brand-text">FM Solar</span>
+  <div class="logo">
+    <div class="logo-box">☀️</div>
+    <span class="logo-txt">FM Solar</span>
   </div>
-  <a href="https://wa.me/2120664995097" class="nav-wa" target="_blank">💬 WhatsApp</a>
+  <a href="https://wa.me/2120664995097" class="wa-btn" target="_blank">💬 WhatsApp</a>
 </nav>
 
-<!-- Hero -->
-<div class="hero-section">
-  <div class="hero-glow"></div>
-  <div class="hero rv">
-    <div class="hero-pill"><span class="dot"></span> ⭐ تقييم العملاء 4.8/5</div>
-    <h1>كاميرا المراقبة<br><span class="accent">الشمسية</span> 3PTZ</h1>
-    <p class="hero-sub">15MP · 3 عدسات · طاقة شمسية + 4G<br>بلا واي فاي، بلا كابلات — Sans câbles</p>
+<section class="hero">
+  <div class="hero-badge">⭐ تقييم العملاء 4.8/5</div>
+  <h1>كاميرا المراقبة<br><span>الشمسية</span> 3PTZ</h1>
+  <p>15MP · 3 عدسات · طاقة شمسية + 4G<br>بلا واي فاي، بلا كابلات — Sans câbles</p>
+</section>
+
+<!-- CAROUSEL -->
+<div class="carousel" id="carousel">
+  <div class="carousel-inner" id="cInner">
+    <div class="carousel-slide"><img src="img1.png" alt="Camera 1"></div>
+    <div class="carousel-slide"><img src="img2.png" alt="Camera 2"></div>
+    <div class="carousel-slide"><img src="img3.png" alt="Camera 3"></div>
+  </div>
+  <div class="sale-tag">-28%</div>
+  <button class="carousel-arr prev" onclick="cGo(-1)">‹</button>
+  <button class="carousel-arr next" onclick="cGo(1)">›</button>
+  <div class="carousel-dots" id="cDots">
+    <span class="active" onclick="cSet(0)"></span>
+    <span onclick="cSet(1)"></span>
+    <span onclick="cSet(2)"></span>
   </div>
 </div>
 
-<!-- Gallery — Full Width -->
-<div class="gallery rv">
-  <div class="gallery-track" id="trk">
-    <img src="img1.png" alt="Camera Solaire 3PTZ">
-    <img src="img2.png" alt="Camera Solaire 3PTZ - 2">
-    <img src="img3.png" alt="Camera Solaire 3PTZ - 3">
-  </div>
-  <div class="gallery-badge">-28%</div>
-  <button class="g-arr l" onclick="sl(-1)">‹</button>
-  <button class="g-arr r" onclick="sl(1)">›</button>
-  <div class="gallery-nav">
-    <div class="gallery-dot on" onclick="gs(0)"></div>
-    <div class="gallery-dot" onclick="gs(1)"></div>
-    <div class="gallery-dot" onclick="gs(2)"></div>
-  </div>
+<div class="price-row rv">
+  <div class="price-big"><small>MAD </small>1,050</div>
+  <div class="price-old">1,450</div>
+  <div class="price-pct">-28%</div>
 </div>
 
-<!-- Price -->
-<div class="price-bar rv">
-  <div class="price-now"><span class="cur">MAD</span> 1,050</div>
-  <div class="price-was">1,450</div>
-  <div class="price-tag">-28%</div>
+<div class="trust rv">
+  <div class="trust-item"><div class="ti-icon">🚚</div><div class="ti-txt">توصيل مجاني<br>Livraison gratuite</div></div>
+  <div class="trust-item"><div class="ti-icon">💰</div><div class="ti-txt">الدفع عند الاستلام<br>Paiement COD</div></div>
+  <div class="trust-item"><div class="ti-icon">🛡️</div><div class="ti-txt">ضمان الجودة<br>Qualité garantie</div></div>
 </div>
 
-<!-- Trust -->
-<div class="trust-strip rv">
-  <div class="trust-card"><div class="ti">🚚</div><div class="tl">توصيل مجاني<br>Livraison gratuite</div></div>
-  <div class="trust-card"><div class="ti">💰</div><div class="tl">الدفع عند الاستلام<br>Paiement COD</div></div>
-  <div class="trust-card"><div class="ti">🛡️</div><div class="tl">ضمان الجودة<br>Qualité garantie</div></div>
-</div>
-
-<!-- Features — Dark Section -->
-<section class="feat-section rv">
-  <div class="feat-title">🔧 المميزات — Caractéristiques</div>
+<section class="features rv">
+  <div class="sec-title">🔧 المميزات — Caractéristiques</div>
   <div class="feat-grid">
-    <div class="feat-card"><div class="fe">☀️</div><div class="fn">طاقة شمسية</div><div class="fd">بلا فاتورة ضو — Solaire</div></div>
-    <div class="feat-card"><div class="fe">📡</div><div class="fn">شريحة 4G</div><div class="fd">غير دخل الشريحة وخدم — SIM 4G</div></div>
-    <div class="feat-card"><div class="fe">🔄</div><div class="fn">دوران 360°</div><div class="fd">كيغطي كل الزوايا — Panoramique</div></div>
-    <div class="feat-card"><div class="fe">🌙</div><div class="fn">رؤية ليلية</div><div class="fd">واضحة فالضلام — Nocturne</div></div>
-    <div class="feat-card"><div class="fe">📱</div><div class="fn">تحكم بالهاتف</div><div class="fd">فين ما كنتي — À distance</div></div>
-    <div class="feat-card"><div class="fe">🎥</div><div class="fn">3 عدسات 15MP</div><div class="fd">جودة عالية — Haute résolution</div></div>
+    <div class="feat-card"><div class="fc-icon">☀️</div><div class="fc-name">طاقة شمسية</div><div class="fc-desc">بلا فاتورة ضو — Solaire</div></div>
+    <div class="feat-card"><div class="fc-icon">📡</div><div class="fc-name">شريحة 4G</div><div class="fc-desc">دخل الشريحة وخدم — SIM 4G</div></div>
+    <div class="feat-card"><div class="fc-icon">🔄</div><div class="fc-name">دوران 360°</div><div class="fc-desc">كل الزوايا — Panoramique</div></div>
+    <div class="feat-card"><div class="fc-icon">🌙</div><div class="fc-name">رؤية ليلية</div><div class="fc-desc">واضحة فالضلام — Nocturne</div></div>
+    <div class="feat-card"><div class="fc-icon">📱</div><div class="fc-name">تحكم بالهاتف</div><div class="fc-desc">فين ما كنتي — À distance</div></div>
+    <div class="feat-card"><div class="fc-icon">🎥</div><div class="fc-name">3 عدسات 15MP</div><div class="fc-desc">جودة عالية — Haute résolution</div></div>
   </div>
 </section>
 
-<!-- Social Proof -->
-<div class="proof-bar rv">
+<div class="proof rv">
   <div class="proof-stars">⭐⭐⭐⭐⭐</div>
-  <div class="proof-score">4.8 / 5</div>
-  <div class="proof-count">+200 زبون راضي — Plus de 200 clients satisfaits</div>
+  <div class="proof-num">4.8 / 5</div>
+  <div class="proof-txt">+200 زبون راضي — Plus de 200 clients satisfaits</div>
 </div>
 
-<!-- Order Form -->
-<section class="order-section rv" id="order">
-  <div class="order-inner">
-    <div class="order-head">📦 اطلب الآن</div>
-    <div class="order-sub">Commander maintenant — الدفع عند الاستلام</div>
+<section class="order rv" id="order">
+  <div class="order-title">📦 اطلب الآن</div>
+  <div class="order-sub">Commander maintenant — الدفع عند الاستلام</div>
 
-    <div class="fg">
-      <label class="fl">الاسم الكامل — Nom complet *</label>
-      <input type="text" class="fi" id="fn" placeholder="مثال: أحمد بنعلي">
-      <div class="errt" id="en">المرجو إدخال الاسم</div>
-    </div>
-    <div class="fg">
-      <label class="fl">رقم الهاتف — Téléphone *</label>
-      <input type="tel" class="fi" id="fp" placeholder="06XXXXXXXX" dir="ltr">
-      <div class="errt" id="ep">رقم هاتف غير صحيح</div>
-    </div>
-    <div class="fg">
-      <label class="fl">المدينة — Ville *</label>
-      <select class="fs" id="fc">
-        <option value="">— اختر المدينة —</option>
-        <option value="Casablanca">الدار البيضاء - Casablanca</option>
-        <option value="Rabat">الرباط - Rabat</option>
-        <option value="Marrakech">مراكش - Marrakech</option>
-        <option value="Fes">فاس - Fès</option>
-        <option value="Tanger">طنجة - Tanger</option>
-        <option value="Agadir">أكادير - Agadir</option>
-        <option value="Meknes">مكناس - Meknès</option>
-        <option value="Oujda">وجدة - Oujda</option>
-        <option value="Kenitra">القنيطرة - Kénitra</option>
-        <option value="Tetouan">تطوان - Tétouan</option>
-        <option value="Safi">آسفي - Safi</option>
-        <option value="El Jadida">الجديدة - El Jadida</option>
-        <option value="Nador">الناظور - Nador</option>
-        <option value="Beni Mellal">بني ملال - Béni Mellal</option>
-        <option value="Khouribga">خريبكة - Khouribga</option>
-        <option value="Settat">سطات - Settat</option>
-        <option value="Mohammedia">المحمدية - Mohammedia</option>
-        <option value="Autre">مدينة أخرى - Autre</option>
-      </select>
-      <div class="errt" id="ec">المرجو اختيار المدينة</div>
-    </div>
-    <div class="fg hidden" id="ow">
-      <label class="fl">اسم المدينة — Nom de la ville</label>
-      <input type="text" class="fi" id="fo" placeholder="اكتب اسم المدينة">
-    </div>
-    <div class="fg">
-      <label class="fl">العدد — Quantité</label>
-      <div class="qr">
-        <button class="qb" onclick="qc(-1)">−</button>
-        <div class="qv" id="qv">1</div>
-        <button class="qb" onclick="qc(1)">+</button>
-      </div>
-    </div>
-
-    <div class="total-box">
-      <div class="total-label">المبلغ الإجمالي — Total</div>
-      <div class="total-price" id="tp">1,050 <span class="tu">MAD</span></div>
-    </div>
-
-    <button class="cta" id="sb" onclick="send()">
-      <span class="ct">✅ تأكيد الطلب — Confirmer la commande</span>
-      <div class="sp"></div>
-    </button>
-
-    <div class="form-note">💰 الدفع عند الاستلام — Paiement à la livraison<br>🚚 التوصيل خلال 24-48 ساعة</div>
+  <div class="fg">
+    <label class="fl">الاسم الكامل — Nom complet *</label>
+    <input type="text" class="fi" id="fn" placeholder="مثال: أحمد بنعلي" autocomplete="name">
+    <div class="errt" id="en">المرجو إدخال الاسم</div>
   </div>
+  <div class="fg">
+    <label class="fl">رقم الهاتف — Téléphone *</label>
+    <input type="tel" class="fi" id="fp" placeholder="06XXXXXXXX" dir="ltr" autocomplete="tel">
+    <div class="errt" id="ep">رقم هاتف غير صحيح</div>
+  </div>
+  <div class="fg">
+    <label class="fl">المدينة — Ville *</label>
+    <select class="fi" id="fc">
+      <option value="">— اختر المدينة —</option>
+      <option value="Casablanca">الدار البيضاء - Casablanca</option>
+      <option value="Rabat">الرباط - Rabat</option>
+      <option value="Marrakech">مراكش - Marrakech</option>
+      <option value="Fes">فاس - Fès</option>
+      <option value="Tanger">طنجة - Tanger</option>
+      <option value="Agadir">أكادير - Agadir</option>
+      <option value="Meknes">مكناس - Meknès</option>
+      <option value="Oujda">وجدة - Oujda</option>
+      <option value="Kenitra">القنيطرة - Kénitra</option>
+      <option value="Tetouan">تطوان - Tétouan</option>
+      <option value="Safi">آسفي - Safi</option>
+      <option value="El Jadida">الجديدة - El Jadida</option>
+      <option value="Nador">الناظور - Nador</option>
+      <option value="Beni Mellal">بني ملال - Béni Mellal</option>
+      <option value="Khouribga">خريبكة - Khouribga</option>
+      <option value="Settat">سطات - Settat</option>
+      <option value="Mohammedia">المحمدية - Mohammedia</option>
+      <option value="Autre">مدينة أخرى - Autre</option>
+    </select>
+    <div class="errt" id="ec">المرجو اختيار المدينة</div>
+  </div>
+  <div class="fg hidden" id="ow">
+    <label class="fl">اسم المدينة — Nom de la ville</label>
+    <input type="text" class="fi" id="fo" placeholder="اكتب اسم المدينة">
+  </div>
+  <div class="fg">
+    <label class="fl">العدد — Quantité</label>
+    <div class="qty-row">
+      <button class="qty-btn" onclick="qc(-1)">−</button>
+      <div class="qty-val" id="qv">1</div>
+      <button class="qty-btn" onclick="qc(1)">+</button>
+    </div>
+  </div>
+
+  <div class="total">
+    <div class="total-lbl">المبلغ الإجمالي — Total</div>
+    <div class="total-val" id="tp">1,050 <small>MAD</small></div>
+  </div>
+
+  <button class="cta" id="sb" onclick="send()">
+    <span class="ct">✅ تأكيد الطلب — Confirmer</span>
+    <div class="sp"></div>
+  </button>
+  <div class="form-note">💰 الدفع عند الاستلام<br>🚚 توصيل 24-48 ساعة</div>
 </section>
 
-<!-- Footer -->
-<footer class="foot">
-  <p>© 2026 FM Solar Shop — جميع الحقوق محفوظة</p>
-  <p style="margin-top:8px"><a href="https://wa.me/2120664995097">💬 WhatsApp: 0664-995097</a></p>
+<footer class="footer">
+  <p>© 2026 FM Solar Shop</p>
+  <p style="margin-top:6px"><a href="https://wa.me/2120664995097">💬 WhatsApp: 0664-995097</a></p>
 </footer>
 
-<!-- Modal -->
-<div class="mbg" id="modal">
-  <div class="mc">
-    <div class="mi">✅</div>
-    <div class="mh">تم تسجيل طلبك بنجاح!</div>
-    <div class="mp">Votre commande a été enregistrée avec succès.<br><br>فريق التأكيد غادي يتواصل معاك قريبا 📞<br>Notre équipe vous contactera sous peu.</div>
-    <button class="mo" onclick="cm()">👍 حسنا — D'accord</button>
+<div class="modal-bg" id="modal">
+  <div class="modal-box">
+    <div class="m-icon">✅</div>
+    <div class="m-title">تم تسجيل طلبك بنجاح!</div>
+    <div class="m-body">Votre commande a été enregistrée.<br><br>فريق التأكيد غادي يتواصل معاك قريبا 📞</div>
+    <button class="m-btn" onclick="cm()">👍 حسنا — D'accord</button>
   </div>
 </div>
 
 <script>
-const API='https://script.google.com/macros/s/AKfycbxsMD917GeLuK43Z73tyuNJOgwytll7p4ToFnDTer2D4RiRQ8P3cl-UljSGGH5rNQdz/exec';
-const N=3;
-let cur=0;
-const trk=document.getElementById('trk'),dots=document.querySelectorAll('.gallery-dot');
+// ===== GOOGLE SHEET API =====
+var API='https://script.google.com/macros/s/AKfycbxsMD917GeLuK43Z73tyuNJOgwytll7p4ToFnDTer2D4RiRQ8P3cl-UljSGGH5rNQdz/exec';
 
-function gs(n){cur=n;trk.style.transform='translateX('+n*100+'%)';dots.forEach((d,i)=>d.classList.toggle('on',i===n))}
-function sl(d){let n=cur+d;if(n<0)n=N-1;if(n>=N)n=0;gs(n)}
-setInterval(()=>sl(1),5000);
+// ===== CAROUSEL =====
+(function(){
+  var inner=document.getElementById('cInner');
+  var dots=document.querySelectorAll('#cDots span');
+  var total=3;
+  var cur=0;
+  var startX=0,moveX=0,dragging=false;
+  var w=function(){return document.getElementById('carousel').offsetWidth};
 
-let tx=0;
-trk.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
-trk.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40)sl(d>0?-1:1)},{passive:true});
+  function go(n){
+    if(n<0)n=total-1;
+    if(n>=total)n=0;
+    cur=n;
+    inner.style.transform='translateX('+cur*w()+'px)';
+    dots.forEach(function(d,i){d.className=i===cur?'active':''});
+  }
 
-let q=1;const P=1050;
-function qc(d){q=Math.max(1,Math.min(10,q+d));document.getElementById('qv').textContent=q;document.getElementById('tp').innerHTML=(P*q).toLocaleString()+' <span class="tu">MAD</span>'}
+  // Arrows
+  window.cGo=function(d){go(cur+d)};
+  window.cSet=function(n){go(n)};
 
-document.getElementById('fc').addEventListener('change',function(){document.getElementById('ow').classList.toggle('hidden',this.value!=='Autre')});
+  // Touch
+  inner.addEventListener('touchstart',function(e){
+    startX=e.touches[0].clientX;
+    moveX=0;
+    dragging=true;
+    inner.classList.add('dragging');
+  },{passive:true});
 
+  inner.addEventListener('touchmove',function(e){
+    if(!dragging)return;
+    moveX=e.touches[0].clientX-startX;
+    var offset=cur*w()-moveX;
+    inner.style.transform='translateX('+(-offset)+'px)';
+  },{passive:true});
+
+  inner.addEventListener('touchend',function(){
+    dragging=false;
+    inner.classList.remove('dragging');
+    if(Math.abs(moveX)>50){
+      if(moveX>0)go(cur-1);
+      else go(cur+1);
+    }else{
+      go(cur);
+    }
+    moveX=0;
+  },{passive:true});
+
+  // Auto
+  var autoTimer=setInterval(function(){go(cur+1)},5000);
+
+  // Pause auto on touch
+  document.getElementById('carousel').addEventListener('touchstart',function(){
+    clearInterval(autoTimer);
+    autoTimer=setInterval(function(){go(cur+1)},5000);
+  },{passive:true});
+
+  // RTL fix: use positive translateX
+  go(0);
+})();
+
+// ===== QUANTITY =====
+var q=1,P=1050;
+function qc(d){
+  q=Math.max(1,Math.min(10,q+d));
+  document.getElementById('qv').textContent=q;
+  document.getElementById('tp').innerHTML=(P*q).toLocaleString()+' <small>MAD</small>';
+}
+
+// ===== CITY =====
+document.getElementById('fc').addEventListener('change',function(){
+  document.getElementById('ow').classList.toggle('hidden',this.value!=='Autre');
+});
+
+// ===== SUBMIT =====
 function send(){
-  document.querySelectorAll('.fi,.fs').forEach(e=>e.classList.remove('err'));
-  document.querySelectorAll('.errt').forEach(e=>e.classList.remove('on'));
-  const n=document.getElementById('fn').value.trim(),p=document.getElementById('fp').value.trim();
-  let c=document.getElementById('fc').value;
+  document.querySelectorAll('.fi').forEach(function(e){e.classList.remove('err')});
+  document.querySelectorAll('.errt').forEach(function(e){e.classList.remove('on')});
+
+  var n=document.getElementById('fn').value.trim();
+  var p=document.getElementById('fp').value.trim();
+  var c=document.getElementById('fc').value;
   if(c==='Autre')c=document.getElementById('fo').value.trim();
-  let ok=true;
+
+  var ok=true;
   if(!n){document.getElementById('fn').classList.add('err');document.getElementById('en').classList.add('on');ok=false}
   if(!p||p.length<9){document.getElementById('fp').classList.add('err');document.getElementById('ep').classList.add('on');ok=false}
   if(!c){document.getElementById('fc').classList.add('err');document.getElementById('ec').classList.add('on');ok=false}
-  if(!ok){document.querySelector('.err')?.scrollIntoView({behavior:'smooth',block:'center'});return}
-  const b=document.getElementById('sb');b.classList.add('ld');
-  const d={date:new Date().toLocaleDateString('fr-FR'),name:n,city:c,phone:p,product:'Camera Solaire 3PTZ 15MP',price:P*q,quantity:q,status:'Confirmed',payment:'Pending',source:'Website'};
-  if(API!=='YOUR_GOOGLE_SCRIPT_URL_HERE'){fetch(API,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).finally(()=>{b.classList.remove('ld');dn()})}
-  else{setTimeout(()=>{b.classList.remove('ld');dn()},1200)}
+  if(!ok){
+    var first=document.querySelector('.err');
+    if(first)first.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+
+  var btn=document.getElementById('sb');
+  btn.classList.add('ld');
+
+  var data={
+    date:new Date().toLocaleDateString('fr-FR'),
+    name:n,city:c,phone:p,
+    product:'Camera Solaire 3PTZ 15MP',
+    price:P*q,quantity:q,
+    status:'Confirmed',payment:'Pending',source:'Website'
+  };
+
+  fetch(API,{
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(data)
+  }).then(function(){
+    btn.classList.remove('ld');
+    done();
+  }).catch(function(){
+    btn.classList.remove('ld');
+    done();
+  });
 }
-function dn(){document.getElementById('modal').classList.add('on');document.getElementById('fn').value='';document.getElementById('fp').value='';document.getElementById('fc').value='';q=1;document.getElementById('qv').textContent='1';document.getElementById('tp').innerHTML='1,050 <span class="tu">MAD</span>'}
+
+function done(){
+  document.getElementById('modal').classList.add('on');
+  document.getElementById('fn').value='';
+  document.getElementById('fp').value='';
+  document.getElementById('fc').value='';
+  q=1;
+  document.getElementById('qv').textContent='1';
+  document.getElementById('tp').innerHTML='1,050 <small>MAD</small>';
+}
 function cm(){document.getElementById('modal').classList.remove('on')}
 
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:0.08});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+// ===== SCROLL REVEAL =====
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
 </script>
 </body>
 </html>
